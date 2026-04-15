@@ -90,8 +90,14 @@ DATE_NAME_HINTS = ("tarih", "date", "datum", "zaman", "time", "day",
                    "_dt", "dt_", "created", "updated", "signup", "birth", "dogum")
 
 
+DATE_FORMATS = ["%Y-%m-%d", "%Y/%m/%d", "%d/%m/%Y", "%m/%d/%Y",
+                "%d-%m-%Y", "%d.%m.%Y", "%Y.%m.%d", "%Y-%m-%d %H:%M:%S",
+                "%d/%m/%Y %H:%M:%S", "%Y-%m-%dT%H:%M:%S"]
+
+
 def _parse_date_ratio(series: pd.Series) -> float:
-    sample = series.dropna().astype(str).head(200)
+    sample = series.dropna().astype(str).str.strip()
+    sample = sample[sample != ""].head(200)
     if len(sample) == 0:
         return 0.0
     import warnings
@@ -101,7 +107,13 @@ def _parse_date_ratio(series: pd.Series) -> float:
         for kwargs in ({}, {"dayfirst": True}, {"yearfirst": True}):
             try:
                 parsed = pd.to_datetime(sample, errors="coerce", **kwargs)
-                best = max(best, parsed.notna().sum())
+                best = max(best, int(parsed.notna().sum()))
+            except Exception:
+                pass
+        for fmt in DATE_FORMATS:
+            try:
+                parsed = pd.to_datetime(sample, errors="coerce", format=fmt)
+                best = max(best, int(parsed.notna().sum()))
             except Exception:
                 pass
     return best / len(sample)
@@ -275,16 +287,19 @@ with st.sidebar:
     use_sample = st.button("Örnek veri kullan", use_container_width=True)
 
     if uploaded is not None:
-        try:
-            df = read_any(uploaded)
-            st.session_state.df_original = df.copy()
-            st.session_state.df_transformed = df.copy()
-            st.session_state.log = []
-            st.session_state.type_overrides = {}
-            st.session_state.data_version += 1
-            log_action(f"Veri yüklendi: {df.shape[0]} satır x {df.shape[1]} sütun")
-        except Exception as e:
-            st.error(f"Yükleme hatası: {e}")
+        upload_key = (uploaded.name, getattr(uploaded, "size", None))
+        if st.session_state.get("_uploaded_key") != upload_key:
+            try:
+                df = read_any(uploaded)
+                st.session_state.df_original = df.copy()
+                st.session_state.df_transformed = df.copy()
+                st.session_state.log = []
+                st.session_state.type_overrides = {}
+                st.session_state.data_version += 1
+                st.session_state._uploaded_key = upload_key
+                log_action(f"Veri yüklendi: {df.shape[0]} satır x {df.shape[1]} sütun")
+            except Exception as e:
+                st.error(f"Yükleme hatası: {e}")
 
     if use_sample:
         try:
