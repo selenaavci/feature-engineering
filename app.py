@@ -10,7 +10,7 @@ st.set_page_config(page_title="Feature Engineering Agent", page_icon="🛠️", 
 
 st.title("Feature Engineering Agent")
 st.caption("Ham veriyi tek tıkla modele hazır, anlamlı özelliklere dönüştür. "
-           "Her dönüşümün 'Nedir?' ve 'Ne zaman?' açıklaması ile — ML bilgisi gerekmez.")
+           "Her dönüşümün 'Nedir?' ve 'Ne zaman?' açıklaması ile Makine Öğrenmesi bilgisi gerekmez.")
 
 if "df_original" not in st.session_state:
     st.session_state.df_original = None
@@ -233,7 +233,7 @@ def render_method_group(title, col, options_spec, apply_fn, extra_inputs=None):
 
 
 with st.sidebar:
-    st.header("1. Veri Yükle")
+    st.header("Veri Yükle")
     st.caption("Desteklenen formatlar: CSV, XLSX, XLS, XML, JSON. Maks. 5 GB.")
     uploaded = st.file_uploader("Dosya seç", type=["csv", "xlsx", "xls", "xml", "json"])
     use_sample = st.button("Örnek veri kullan", use_container_width=True)
