@@ -1,0 +1,251 @@
+customer_id,full_name,age,country,membership_tier,signup_date,last_purchase_date,annual_income,product_category,channel,unit_price,unit_cost,quantity,total_amount,product_review,is_churned
+1000,Kerem Rossi,25.0,UK,Platinum,2022-03-31,2023-04-22,52850.67,Home,Partner,1397.76,491.73,6,8386.57,Poor packaging but product works fine.,0
+1001,Luca Rossi,27.0,ES,Gold,2023-10-06,2024-07-05,43668.2,Sports,Web,137.0,103.46,5,684.98,ok,0
+1002,Anna Schmidt,42.0,NL,Bronze,2023-05-13,2023-06-04,45044.7,Home,Store,1492.08,1241.6,5,7460.38,Excellent!!! Will buy again :),0
+1003,Sara Keller,23.0,DE,Bronze,2023-11-01,2024-01-21,47647.1,Sports,Partner,1666.2,1237.35,10,16661.97,"Average quality, delivery was fast.",0
+1004,Mehmet Demir,34.0,UK,Silver,2023-04-17,2024-04-03,28704.63,Beauty,Web,1141.79,430.33,3,3425.38,"Not worth the price, disappointed.",0
+1005,Marie Rossi,32.0,NL,Silver,2023-07-14,2024-05-10,55769.81,Beauty,Partner,822.97,633.17,1,822.97,Best purchase of the year #happy,0
+1006,Omar Schmidt,43.0,FR,Silver,2023-02-14,2023-09-05,26082.95,Sports,Web,55.2,19.29,9,496.77,ok,0
+1007,John Brown,18.0,IT,Gold,2023-01-17,2023-12-25,17613.9,Sports,Mobile,244.83,202.98,7,1713.82,Broken on arrival. Terrible experience.,0
+1008,Ali Kaya,33.0,NL,Silver,2022-03-21,2022-05-09,55279.32,Home,Web,412.7,193.26,9,3714.33,Good value for money.,0
+1009,Elena Dupont,40.0,ES,Silver,2023-08-08,2024-06-17,40538.13,Home,Mobile,993.04,478.07,1,993.04,"Not worth the price, disappointed.",0
+1010,Elena Garcia,20.0,IT,Bronze,2022-10-22,2022-11-03,21855.56,Fashion,Store,1567.64,541.62,4,6270.57,Broken on arrival. Terrible experience.,0
+1011,Marie Demir,50.0,NL,Gold,2023-06-05,2023-10-25,39282.1,Fashion,Web,289.1,174.82,1,289.1,"Not worth the price, disappointed.",0
+1012,Tom Garcia,26.0,ES,Platinum,2024-09-02,2024-12-26,25270.35,Fashion,Web,748.14,565.88,6,4488.81,Best purchase of the year #happy,1
+1013,Marie Dupont,22.0,NL,Bronze,2022-06-14,2022-11-11,39588.5,Books,Web,1499.73,1184.69,5,7498.65,Broken on arrival. Terrible experience.,0
+1014,Ada Brown,23.0,US,Gold,2023-01-15,2023-05-26,18323.15,Fashion,Mobile,254.29,192.52,10,2542.88,"Not worth the price, disappointed.",0
+1015,Sara Rossi,42.0,DE,Gold,2024-08-29,2025-04-03,73404.53,Electronics,Store,272.33,183.2,2,544.65,Poor packaging but product works fine.,0
+1016,Elena Jones,32.0,DE,Bronze,2024-04-05,2024-06-10,30827.53,Beauty,Store,982.28,652.8,4,3929.13,,0
+1017,Mehmet Brown,,IT,Bronze,2022-05-21,2022-05-25,23703.51,Home,Store,1610.68,897.24,11,17717.46,,0
+1018,Marie Brown,64.0,ES,Gold,2024-07-22,2025-09-29,27869.28,Sports,Partner,754.63,403.15,2,1509.25,,1
+1019,Marie Garcia,42.0,TR,Bronze,2022-04-16,2022-12-10,86193.39,Sports,Web,627.57,237.93,7,4392.96,"Not worth the price, disappointed.",1
+1020,Ali Schmidt,43.0,ES,Bronze,2024-04-10,2024-05-07,60256.03,Fashion,Store,793.32,376.75,11,8726.57,,0
+1021,Lina Dupont,24.0,IT,Gold,2023-07-26,2023-12-14,65878.77,Beauty,Store,113.4,91.71,1,113.4,Best purchase of the year #happy,0
+1022,Anna Garcia,34.0,DE,Bronze,2024-01-10,2024-03-18,39194.09,Home,Mobile,1716.57,951.91,9,15449.12,Excellent!!! Will buy again :),0
+1023,Marie Novak,37.0,IT,Silver,2023-01-03,2024-01-06,21451.52,Fashion,Partner,600.78,493.77,4,2403.14,ok,0
+1024,Tom Kaya,29.0,UK,Platinum,2024-02-06,2024-12-18,59563.13,Electronics,Store,412.79,281.58,6,2476.71,Best purchase of the year #happy,0
+1025,Mehmet Schmidt,56.0,DE,Silver,2022-05-18,2022-08-11,49949.46,Electronics,Store,1592.28,1306.17,9,14330.51,"Great product, very satisfied!",0
+1026,Ali Kaya,38.0,NL,Gold,2023-11-11,2024-07-29,44664.99,Home,Web,989.38,623.09,2,1978.77,Poor packaging but product works fine.,0
+1027,Omar Demir,40.0,FR,Gold,2023-11-03,2024-11-06,41571.56,Fashion,Store,734.74,347.49,10,7347.42,"Great product, very satisfied!",0
+1028,Mehmet Schmidt,48.0,FR,Silver,2022-12-27,2024-01-21,36523.57,Beauty,Store,1973.4,1371.05,10,19733.97,Poor packaging but product works fine.,0
+1029,Mehmet Yilmaz,22.0,ES,Bronze,2022-01-13,2023-01-09,16307.18,Sports,Partner,890.21,414.89,10,8902.05,Good value for money.,1
+1030,Kerem Brown,30.0,TR,Silver,2023-10-28,2025-03-10,38914.44,Books,Partner,189.98,150.72,10,1899.77,"Great product, very satisfied!",1
+1031,Lina Keller,18.0,NL,Gold,2022-02-06,2022-04-26,,Home,Web,484.72,371.87,1,484.72,Poor packaging but product works fine.,1
+1032,Mehmet Kaya,36.0,UK,Silver,2022-04-24,2022-06-26,71452.84,Books,Store,1263.72,970.69,5,6318.62,"Not worth the price, disappointed.",0
+1033,Anna Brown,36.0,NL,Silver,2022-02-24,2022-02-27,14538.38,Home,Web,354.52,124.24,1,354.52,Good value for money.,0
+1034,Mehmet Schmidt,20.0,ES,Bronze,2023-06-26,2023-11-24,61920.79,Electronics,Web,1301.97,1064.14,2,2603.95,"Not worth the price, disappointed.",0
+1035,Ada Garcia,37.0,FR,Bronze,2022-11-01,2023-11-29,42487.03,Electronics,Store,823.48,345.61,7,5764.35,Poor packaging but product works fine.,0
+1036,Omar Garcia,34.0,IT,Gold,2023-08-13,2024-07-29,39841.44,Sports,Web,639.27,468.64,4,2557.06,Good value for money.,0
+1037,Kerem Yilmaz,28.0,US,Bronze,2024-07-10,2025-07-11,45032.99,Home,Web,1676.39,958.52,6,10058.35,,0
+1038,Ali Novak,33.0,TR,Gold,2022-03-08,2023-03-14,13421.24,Books,Mobile,1714.53,865.4,8,13716.24,"Not worth the price, disappointed.",0
+1039,Zeynep Novak,34.0,ES,Silver,2022-11-07,2023-01-18,38167.47,Fashion,Partner,31.35,13.01,8,250.78,ok,0
+1040,John Keller,54.0,ES,Bronze,2023-10-13,2023-12-23,29106.95,Electronics,Web,169.3,121.12,1,169.3,Broken on arrival. Terrible experience.,0
+1041,Sara Jones,18.0,TR,Bronze,2022-10-20,2024-02-29,24507.07,Sports,Store,494.9,378.09,7,3464.29,Broken on arrival. Terrible experience.,0
+1042,Elena Garcia,44.0,IT,Bronze,2024-07-20,2025-09-15,42117.1,Beauty,Web,1705.51,985.16,5,8527.55,Poor packaging but product works fine.,0
+1043,Marie Jones,28.0,TR,Bronze,2023-02-03,2023-12-14,56959.3,Fashion,Store,391.29,122.73,7,2739.03,Broken on arrival. Terrible experience.,0
+1044,Mehmet Schmidt,54.0,UK,Silver,2023-12-15,2025-04-18,67776.78,Sports,Store,1525.25,1215.37,6,9151.5,ok,0
+1045,Ada Novak,23.0,FR,Platinum,2023-07-08,2024-02-02,41131.03,Books,Mobile,1470.17,1047.48,11,16171.86,"Average quality, delivery was fast.",0
+1046,Omar Yilmaz,,US,Silver,2022-08-30,2023-03-24,68680.71,Electronics,Partner,1115.37,826.64,3,3346.11,Poor packaging but product works fine.,0
+1047,Ada Brown,22.0,NL,Bronze,2023-12-15,2023-12-20,51891.49,Sports,Mobile,107.44,46.09,10,1074.38,Broken on arrival. Terrible experience.,0
+1048,Elena Keller,25.0,IT,Bronze,2023-09-03,2024-08-04,10868.35,Fashion,Store,702.58,540.52,10,7025.83,"Average quality, delivery was fast.",0
+1049,Sara Yilmaz,62.0,FR,Platinum,2022-12-08,2023-07-09,39576.08,Fashion,Mobile,821.8,308.38,9,7396.24,Best purchase of the year #happy,1
+1050,Omar Demir,24.0,UK,Bronze,2022-04-14,2022-10-14,48709.51,Beauty,Mobile,45.16,24.81,11,496.77,,0
+1051,John Schmidt,43.0,DE,Gold,2024-06-15,2025-03-22,27963.09,Electronics,Mobile,1487.21,929.37,4,5948.85,Best purchase of the year #happy,0
+1052,Ali Brown,35.0,DE,Bronze,2022-09-08,2023-10-09,54632.7,Beauty,Mobile,957.75,811.3,7,6704.26,,0
+1053,Ada Brown,35.0,UK,Bronze,2023-10-15,2024-11-07,,Electronics,Web,1919.95,684.75,6,11519.71,Good value for money.,1
+1054,Anna Keller,,DE,Silver,2023-09-28,2024-04-07,22292.83,Electronics,Mobile,421.97,196.7,6,2531.83,Excellent!!! Will buy again :),0
+1055,Sara Demir,33.0,US,Platinum,2023-05-05,2023-11-26,21782.45,Home,Web,528.09,252.1,5,2640.47,Best purchase of the year #happy,0
+1056,Sara Jones,,FR,Silver,2024-05-13,2025-05-04,47780.33,Fashion,Web,285.03,229.55,1,285.03,"Great product, very satisfied!",0
+1057,Lina Novak,49.0,UK,Platinum,2023-08-14,2024-04-17,89214.36,Electronics,Mobile,333.86,242.09,1,333.86,"Average quality, delivery was fast.",0
+1058,Luca Yilmaz,,NL,Gold,2022-05-29,2022-11-04,,Electronics,Partner,440.55,232.48,7,3083.83,Excellent!!! Will buy again :),0
+1059,Ali Brown,41.0,TR,Bronze,2023-12-10,2025-01-26,71347.14,Beauty,Partner,260.79,98.85,4,1043.17,ok,0
+1060,Luca Kaya,40.0,ES,Bronze,2023-01-24,2023-03-29,,Books,Web,1077.04,691.44,3,3231.12,"Average quality, delivery was fast.",0
+1061,Elena Kaya,38.0,ES,Silver,2023-08-19,2024-10-15,23800.87,Books,Store,1111.55,575.66,10,11115.46,ok,1
+1062,John Schmidt,41.0,NL,Gold,2022-02-05,2023-03-10,28226.63,Fashion,Partner,197.2,155.65,8,1577.63,Excellent!!! Will buy again :),1
+1063,Mia Rossi,18.0,TR,Platinum,2024-07-01,2024-12-19,36847.94,Sports,Partner,764.31,446.64,6,4585.89,Good value for money.,0
+1064,Tom Dupont,55.0,US,Silver,2023-05-18,2023-07-07,91007.15,Beauty,Mobile,56.05,47.0,11,616.54,Excellent!!! Will buy again :),0
+1065,Sara Yilmaz,32.0,ES,Bronze,2023-02-14,2023-11-29,57199.51,Fashion,Web,760.64,393.07,11,8367.04,Excellent!!! Will buy again :),0
+1066,Mehmet Novak,,DE,Silver,2023-08-08,2024-10-21,55023.52,Beauty,Partner,379.67,222.91,1,379.67,Broken on arrival. Terrible experience.,0
+1067,Mehmet Novak,36.0,US,Silver,2022-04-21,2022-06-28,35810.94,Home,Web,1804.27,1518.31,4,7217.07,Good value for money.,0
+1068,Kerem Rossi,31.0,IT,Gold,2024-01-13,2024-11-16,29608.17,Home,Web,513.98,199.51,2,1027.96,Best purchase of the year #happy,1
+1069,Anna Brown,62.0,DE,Gold,2024-02-12,2024-12-10,32444.44,Electronics,Partner,209.79,93.46,11,2307.66,,0
+1070,Marie Garcia,44.0,FR,Silver,2024-01-18,2024-07-06,71805.36,Beauty,Partner,497.15,193.24,1,497.15,Poor packaging but product works fine.,1
+1071,John Rossi,43.0,TR,Platinum,2023-03-11,2023-09-07,65033.24,Electronics,Mobile,1906.88,743.62,2,3813.76,,0
+1072,Kerem Novak,41.0,NL,Bronze,2022-03-13,2022-11-01,30398.57,Home,Partner,382.61,322.82,2,765.21,Best purchase of the year #happy,0
+1073,Ada Dupont,37.0,US,Bronze,2022-12-09,2023-11-03,44534.44,Home,Mobile,431.79,348.92,7,3022.53,ok,1
+1074,Mehmet Garcia,36.0,UK,Bronze,2023-03-11,2023-05-27,40601.53,Books,Store,1844.49,877.12,5,9222.43,ok,0
+1075,Tom Dupont,45.0,ES,Bronze,2022-06-27,2023-11-02,17995.29,Sports,Store,1786.05,1272.19,10,17860.51,ok,0
+1076,John Schmidt,47.0,IT,Silver,2024-06-13,2025-03-21,38583.85,Electronics,Web,1815.1,963.12,3,5445.31,,0
+1077,Mehmet Demir,23.0,DE,Bronze,2023-10-18,2024-03-19,74693.8,Fashion,Store,1558.52,1205.28,1,1558.52,"Not worth the price, disappointed.",0
+1078,Ali Rossi,45.0,FR,Bronze,2024-01-12,2024-04-23,12657.73,Sports,Store,1906.32,1211.53,9,17156.84,"Average quality, delivery was fast.",0
+1079,Tom Demir,31.0,DE,Platinum,2023-02-05,2024-05-31,54330.41,Books,Partner,1709.43,815.77,7,11966.0,Broken on arrival. Terrible experience.,0
+1080,Marie Brown,23.0,FR,Silver,2024-07-25,2025-11-26,32792.85,Beauty,Mobile,1527.55,862.05,7,10692.88,Broken on arrival. Terrible experience.,0
+1081,Mia Schmidt,30.0,FR,Platinum,2022-08-07,2022-12-31,35237.78,Fashion,Web,678.9,501.46,10,6788.99,,1
+1082,John Kaya,71.0,FR,Gold,2022-01-27,2022-08-26,27084.24,Electronics,Store,1961.83,663.69,11,21580.17,"Not worth the price, disappointed.",0
+1083,Mehmet Schmidt,38.0,ES,Bronze,2022-06-26,2023-03-06,54039.26,Fashion,Mobile,1308.85,1106.79,7,9161.93,"Not worth the price, disappointed.",0
+1084,Sara Demir,44.0,DE,Gold,2022-07-29,2022-08-24,20980.13,Home,Mobile,1577.05,1194.88,10,15770.53,Best purchase of the year #happy,0
+1085,Mia Dupont,33.0,NL,Gold,2022-05-24,2023-08-24,,Home,Web,144.36,47.5,2,288.72,,1
+1086,John Garcia,27.0,UK,Silver,2022-03-07,2023-05-11,31839.51,Sports,Mobile,1640.21,575.74,5,8201.04,Excellent!!! Will buy again :),1
+1087,Luca Keller,38.0,DE,Silver,2023-01-03,2023-11-12,51279.8,Fashion,Mobile,181.1,71.89,3,543.31,"Great product, very satisfied!",0
+1088,Mia Jones,55.0,FR,Gold,2022-07-03,2023-09-13,10663.31,Sports,Mobile,392.68,165.49,6,2356.07,,1
+1089,Luca Schmidt,18.0,UK,Bronze,2022-01-27,2023-05-07,34254.04,Home,Store,843.13,604.4,7,5901.88,"Not worth the price, disappointed.",0
+1090,Kerem Novak,37.0,FR,Bronze,2024-04-24,2024-05-27,18247.92,Electronics,Mobile,1790.08,1173.32,9,16110.7,"Not worth the price, disappointed.",1
+1091,Kerem Dupont,55.0,US,Bronze,2023-08-09,2024-01-07,21393.86,Beauty,Mobile,421.9,224.66,8,3375.2,,0
+1092,Zeynep Keller,32.0,ES,Gold,2024-07-18,2025-05-19,33091.17,Sports,Store,1860.04,660.14,9,16740.33,"Not worth the price, disappointed.",0
+1093,Omar Garcia,44.0,FR,Platinum,2023-06-11,2024-01-18,52279.37,Books,Mobile,1897.8,1171.46,1,1897.8,Best purchase of the year #happy,0
+1094,Anna Rossi,38.0,IT,Platinum,2024-03-05,2024-12-22,48303.95,Beauty,Partner,394.48,140.75,9,3550.36,Best purchase of the year #happy,0
+1095,Luca Garcia,49.0,TR,Bronze,2024-07-21,2025-08-11,77528.15,Beauty,Store,929.02,615.3,4,3716.07,Poor packaging but product works fine.,0
+1096,Tom Novak,32.0,IT,Platinum,2024-05-13,2024-08-29,35426.68,Home,Partner,522.27,394.18,11,5744.98,,1
+1097,Anna Jones,57.0,IT,Bronze,2023-08-02,2024-06-05,43558.02,Books,Partner,62.8,44.52,1,62.8,,0
+1098,Kerem Brown,40.0,ES,Gold,2024-04-30,2025-02-06,29157.66,Beauty,Store,1552.07,889.53,3,4656.2,Good value for money.,1
+1099,Anna Keller,47.0,IT,Gold,2023-01-10,2023-07-24,32030.66,Electronics,Mobile,1964.47,1245.41,9,17680.2,"Not worth the price, disappointed.",0
+1100,Zeynep Yilmaz,35.0,UK,Silver,2024-01-01,2025-03-13,43827.74,Home,Partner,932.71,633.84,7,6529.0,"Not worth the price, disappointed.",1
+1101,Mehmet Novak,18.0,IT,Silver,2022-08-03,2023-05-17,21218.25,Home,Mobile,1895.17,990.69,3,5685.5,"Average quality, delivery was fast.",0
+1102,Marie Novak,31.0,IT,Bronze,2022-12-31,2023-01-18,21672.54,Books,Mobile,1917.83,617.96,3,5753.48,,0
+1103,Omar Demir,33.0,DE,Bronze,2022-03-01,2023-06-12,28182.24,Fashion,Partner,1139.22,590.66,2,2278.44,"Not worth the price, disappointed.",1
+1104,Luca Garcia,49.0,ES,Platinum,2023-11-05,2025-01-11,17028.14,Books,Mobile,1952.04,1489.76,4,7808.14,Poor packaging but product works fine.,0
+1105,Anna Keller,36.0,UK,Bronze,2023-12-06,2024-07-21,,Fashion,Web,789.1,275.68,6,4734.59,ok,1
+1106,Zeynep Brown,45.0,DE,Platinum,2022-10-10,2024-02-09,,Beauty,Mobile,1872.99,1568.55,1,1872.99,,0
+1107,John Jones,32.0,ES,Bronze,2023-06-22,2024-07-24,110731.75,Fashion,Partner,1729.63,1421.52,3,5188.9,Broken on arrival. Terrible experience.,0
+1108,Mia Brown,54.0,IT,Silver,2023-02-28,2023-05-31,39761.61,Electronics,Store,1348.98,727.26,9,12140.8,"Average quality, delivery was fast.",0
+1109,John Jones,18.0,TR,Platinum,2023-06-04,2024-09-14,,Electronics,Mobile,961.11,511.28,5,4805.57,"Average quality, delivery was fast.",0
+1110,Marie Dupont,34.0,FR,Silver,2022-10-10,2023-06-05,46861.38,Beauty,Partner,1299.89,948.87,10,12998.86,Broken on arrival. Terrible experience.,0
+1111,Mehmet Rossi,49.0,NL,Gold,2024-08-18,2025-06-13,37053.88,Fashion,Partner,1475.78,815.87,5,7378.9,Excellent!!! Will buy again :),0
+1112,Kerem Schmidt,20.0,IT,Silver,2023-07-18,2023-09-12,29871.53,Home,Partner,403.36,185.64,4,1613.43,Good value for money.,0
+1113,Mia Brown,37.0,FR,Gold,2022-05-28,2022-09-29,26601.69,Fashion,Web,1413.01,478.25,4,5652.02,Good value for money.,0
+1114,Sara Dupont,35.0,IT,Bronze,2022-07-01,2022-09-28,46600.18,Home,Store,489.44,349.21,2,978.89,Excellent!!! Will buy again :),0
+1115,Mia Demir,34.0,TR,Bronze,2024-02-03,2024-08-04,13804.29,Beauty,Mobile,1997.67,1273.38,6,11986.03,Good value for money.,0
+1116,Sara Keller,41.0,TR,Bronze,2023-05-07,2023-11-27,59322.26,Books,Web,1674.86,602.55,8,13398.88,"Average quality, delivery was fast.",0
+1117,Ada Demir,35.0,FR,Gold,2023-02-06,2024-03-23,14907.67,Electronics,Store,1118.43,517.8,7,7829.03,ok,1
+1118,Luca Novak,47.0,UK,Silver,2024-01-10,2024-04-07,33762.12,Fashion,Partner,1827.44,689.0,4,7309.75,,0
+1119,Omar Brown,42.0,DE,Silver,2023-03-09,2024-03-31,,Sports,Partner,1671.9,697.5,9,15047.1,,1
+1120,Mia Kaya,18.0,DE,Silver,2022-05-21,2022-12-05,11246.68,Books,Store,385.78,157.22,7,2700.49,Broken on arrival. Terrible experience.,0
+1121,Anna Brown,25.0,IT,Platinum,2023-02-08,2023-03-16,35331.58,Beauty,Partner,204.6,114.07,3,613.79,Broken on arrival. Terrible experience.,0
+1122,Mehmet Schmidt,37.0,IT,Gold,2023-08-25,2024-01-09,37771.09,Beauty,Web,1888.16,983.97,11,20769.75,,0
+1123,Mia Schmidt,18.0,IT,Platinum,2022-07-30,2023-06-02,80436.73,Electronics,Store,110.57,85.92,10,1105.67,Good value for money.,0
+1124,Sara Garcia,35.0,UK,Bronze,2022-02-26,2023-05-10,17403.77,Beauty,Partner,1642.81,1169.92,7,11499.65,"Average quality, delivery was fast.",0
+1125,Sara Schmidt,44.0,ES,Bronze,2024-02-26,2025-03-31,29947.02,Home,Store,1050.95,424.26,3,3152.85,"Great product, very satisfied!",0
+1126,Mia Dupont,29.0,DE,Bronze,2022-03-13,2023-07-19,40618.7,Sports,Web,1752.32,799.46,6,10513.94,ok,0
+1127,Luca Demir,34.0,TR,Bronze,2023-08-30,2024-12-09,17148.49,Home,Partner,1426.72,870.21,10,14267.16,Broken on arrival. Terrible experience.,1
+1128,Mia Brown,36.0,FR,Platinum,2022-12-26,2024-01-05,18197.24,Electronics,Mobile,1494.68,1176.52,4,5978.7,"Average quality, delivery was fast.",0
+1129,Kerem Novak,40.0,UK,Bronze,2023-12-12,2024-06-15,94037.95,Fashion,Partner,904.57,590.0,9,8141.12,Best purchase of the year #happy,0
+1130,Ada Schmidt,31.0,UK,Silver,2023-11-10,2025-02-13,,Sports,Web,431.43,150.78,3,1294.28,"Not worth the price, disappointed.",0
+1131,Zeynep Demir,37.0,US,Bronze,2024-02-14,2024-09-06,32624.29,Sports,Web,1428.37,779.99,10,14283.72,"Great product, very satisfied!",0
+1132,Mehmet Dupont,46.0,ES,Bronze,2023-11-21,2024-05-04,24653.5,Beauty,Mobile,164.71,118.72,3,494.14,Excellent!!! Will buy again :),0
+1133,Anna Rossi,25.0,TR,Bronze,2023-07-09,2024-02-17,37616.93,Fashion,Mobile,1390.15,932.94,7,9731.02,ok,0
+1134,Omar Garcia,34.0,NL,Gold,2024-02-10,2024-06-08,28978.45,Beauty,Web,1523.24,852.87,6,9139.43,Broken on arrival. Terrible experience.,0
+1135,John Jones,26.0,TR,Silver,2022-03-13,2023-02-10,51219.75,Home,Partner,941.96,781.08,6,5651.75,Broken on arrival. Terrible experience.,0
+1136,Marie Demir,34.0,DE,Platinum,2023-12-11,2023-12-28,33723.96,Fashion,Partner,1882.74,738.13,5,9413.71,,0
+1137,Omar Schmidt,18.0,UK,Silver,2023-05-16,2024-01-17,13535.66,Sports,Partner,580.92,254.29,10,5809.16,ok,0
+1138,Omar Brown,45.0,TR,Silver,2022-11-19,2023-03-01,23392.69,Fashion,Web,613.37,332.38,3,1840.12,Poor packaging but product works fine.,0
+1139,Kerem Yilmaz,34.0,DE,Gold,2023-07-15,2024-04-28,76049.48,Books,Store,673.76,324.67,8,5390.11,Good value for money.,1
+1140,Mehmet Schmidt,,UK,Silver,2024-09-03,2025-02-08,40767.52,Beauty,Store,557.31,187.1,1,557.31,"Great product, very satisfied!",1
+1141,John Schmidt,41.0,NL,Silver,2023-03-19,2023-10-31,39285.72,Books,Partner,365.42,291.3,9,3288.8,Best purchase of the year #happy,0
+1142,Elena Kaya,,DE,Gold,2023-07-14,2023-12-11,74062.49,Beauty,Store,456.59,148.52,2,913.18,Excellent!!! Will buy again :),0
+1143,Anna Schmidt,28.0,IT,Platinum,2024-03-21,2024-04-13,20568.97,Home,Web,498.68,161.27,2,997.35,"Not worth the price, disappointed.",0
+1144,Mia Yilmaz,45.0,TR,Silver,2023-06-17,2023-06-26,20323.72,Books,Partner,33.98,24.46,8,271.87,Poor packaging but product works fine.,0
+1145,Ali Novak,34.0,ES,Gold,2023-09-07,2024-07-22,17446.72,Electronics,Mobile,159.28,111.72,7,1114.99,ok,1
+1146,Elena Jones,33.0,FR,Bronze,2023-01-12,2023-05-02,23585.97,Books,Web,1470.95,615.42,11,16180.46,Best purchase of the year #happy,0
+1147,Marie Yilmaz,18.0,IT,Silver,2023-11-24,2024-08-21,24932.3,Fashion,Partner,686.07,232.71,2,1372.15,"Not worth the price, disappointed.",0
+1148,Elena Dupont,34.0,FR,Silver,2024-03-11,2025-06-30,27091.47,Electronics,Store,1771.34,1008.06,4,7085.34,,0
+1149,John Dupont,,FR,Gold,2023-02-19,2023-07-04,84820.57,Electronics,Mobile,753.7,496.11,4,3014.8,Broken on arrival. Terrible experience.,0
+1150,Omar Jones,34.0,DE,Bronze,2022-07-25,2023-05-18,40102.36,Sports,Partner,696.21,370.18,9,6265.93,,0
+1151,Omar Yilmaz,64.0,FR,Gold,2024-02-27,2024-07-11,28970.24,Beauty,Mobile,895.43,538.01,11,9849.69,,0
+1152,Sara Garcia,45.0,ES,Bronze,2022-06-01,2023-10-03,36130.84,Books,Partner,1891.38,843.92,9,17022.41,Good value for money.,0
+1153,Marie Rossi,44.0,FR,Bronze,2023-05-20,2023-08-10,9887.79,Sports,Store,785.88,465.16,5,3929.4,,1
+1154,John Brown,41.0,TR,Bronze,2023-05-22,2024-04-23,57602.42,Books,Store,704.23,488.89,6,4225.4,Broken on arrival. Terrible experience.,0
+1155,Sara Garcia,72.0,US,Bronze,2022-02-08,2022-11-12,43618.02,Electronics,Store,1615.82,1317.38,2,3231.64,Broken on arrival. Terrible experience.,0
+1156,Kerem Yilmaz,49.0,US,Bronze,2024-02-21,2024-05-20,35733.05,Fashion,Partner,1856.06,826.9,3,5568.18,"Great product, very satisfied!",0
+1157,Lina Demir,27.0,UK,Bronze,2023-01-14,2024-05-18,44517.25,Electronics,Partner,60.16,24.73,4,240.63,Excellent!!! Will buy again :),0
+1158,Anna Demir,39.0,TR,Silver,2024-01-04,2025-03-01,54687.04,Electronics,Web,1536.08,1142.11,9,13824.74,Excellent!!! Will buy again :),0
+1159,Anna Novak,,FR,Silver,2022-02-04,2023-02-08,21511.79,Electronics,Partner,204.79,92.51,9,1843.09,,0
+1160,Tom Jones,47.0,UK,Gold,2024-05-11,2025-07-31,47933.64,Home,Partner,1010.0,535.06,6,6059.99,"Average quality, delivery was fast.",0
+1161,Elena Schmidt,41.0,ES,Bronze,2022-09-14,2022-09-18,24357.55,Home,Store,292.79,172.61,9,2635.08,Excellent!!! Will buy again :),0
+1162,John Keller,26.0,US,Bronze,2022-09-18,2022-10-18,58005.01,Fashion,Web,144.38,83.99,4,577.52,"Average quality, delivery was fast.",0
+1163,Lina Keller,31.0,TR,Platinum,2023-08-11,2024-04-13,22652.45,Beauty,Partner,1999.53,1100.63,5,9997.67,ok,0
+1164,Mehmet Kaya,25.0,TR,Silver,2022-11-23,2023-05-20,31262.47,Home,Mobile,388.19,308.26,10,3881.9,,0
+1165,Ada Garcia,38.0,US,Bronze,2022-04-05,2023-06-23,34169.8,Fashion,Web,647.12,325.24,9,5824.08,Best purchase of the year #happy,0
+1166,Mehmet Novak,35.0,ES,Bronze,2022-11-04,2023-09-13,24180.57,Sports,Store,1072.47,777.03,1,1072.47,Excellent!!! Will buy again :),0
+1167,Sara Jones,53.0,NL,Silver,2023-03-06,2023-11-30,88358.74,Home,Partner,1128.4,417.07,11,12412.38,"Great product, very satisfied!",0
+1168,Sara Kaya,40.0,US,Bronze,2023-06-09,2024-08-16,39161.94,Fashion,Mobile,440.38,340.49,9,3963.38,,0
+1169,Ada Jones,34.0,TR,Bronze,2024-06-07,2024-07-19,67150.25,Books,Store,1419.29,902.36,3,4257.86,,0
+1170,Tom Novak,46.0,IT,Bronze,2022-11-10,2023-11-23,11040.95,Electronics,Web,877.91,420.13,9,7901.2,Good value for money.,0
+1171,Anna Dupont,45.0,US,Platinum,2022-06-30,2022-09-12,,Fashion,Web,997.61,803.66,4,3990.46,"Great product, very satisfied!",1
+1172,Kerem Rossi,18.0,UK,Bronze,2022-05-14,2023-02-25,67347.68,Beauty,Mobile,759.7,573.36,4,3038.81,"Not worth the price, disappointed.",1
+1173,Ada Garcia,32.0,IT,Bronze,2022-06-20,2023-03-05,65021.43,Home,Store,142.13,110.07,9,1279.19,,0
+1174,Mehmet Kaya,61.0,ES,Bronze,2022-10-13,2023-11-14,,Sports,Partner,1978.29,756.84,7,13848.05,Best purchase of the year #happy,0
+1175,Lina Jones,43.0,DE,Silver,2023-02-23,2023-08-17,68110.69,Books,Partner,617.91,270.62,6,3707.44,Best purchase of the year #happy,0
+1176,Luca Demir,37.0,IT,Bronze,2023-03-13,2023-05-28,28402.42,Home,Mobile,1526.88,1287.09,3,4580.64,"Great product, very satisfied!",0
+1177,Lina Brown,29.0,DE,Silver,2023-08-19,2024-12-16,76957.96,Sports,Mobile,1114.96,700.24,3,3344.88,Broken on arrival. Terrible experience.,0
+1178,Zeynep Yilmaz,56.0,IT,Bronze,2023-06-19,2024-09-27,22048.24,Books,Web,839.66,500.09,11,9236.22,Broken on arrival. Terrible experience.,0
+1179,Kerem Keller,33.0,UK,Bronze,2022-07-17,2023-09-09,10725.46,Books,Store,146.56,99.73,2,293.11,"Great product, very satisfied!",0
+1180,Kerem Jones,46.0,TR,Silver,2022-03-01,2022-12-20,63675.0,Electronics,Partner,1514.68,1285.54,6,9088.08,"Not worth the price, disappointed.",0
+1181,Mehmet Keller,49.0,UK,Gold,2023-08-06,2024-01-26,41797.28,Beauty,Store,1582.58,1018.58,8,12660.67,ok,1
+1182,Ada Kaya,18.0,US,Bronze,2023-02-03,2023-11-26,17664.72,Beauty,Mobile,1656.61,1037.7,11,18222.68,Good value for money.,1
+1183,Kerem Keller,63.0,IT,Gold,2022-02-20,2022-08-27,27216.42,Beauty,Web,1015.26,435.71,3,3045.77,"Great product, very satisfied!",0
+1184,Sara Garcia,41.0,DE,Silver,2024-06-20,2025-10-12,59740.75,Electronics,Partner,1847.37,1452.07,8,14778.98,Good value for money.,0
+1185,Anna Brown,33.0,TR,Bronze,2024-08-08,2025-08-01,47598.92,Fashion,Partner,1874.75,1111.41,4,7499.02,,1
+1186,Omar Novak,29.0,TR,Gold,2022-01-21,2022-05-15,24660.48,Books,Mobile,334.78,204.16,9,3013.03,Excellent!!! Will buy again :),0
+1187,Ada Dupont,47.0,UK,Silver,2023-09-24,2024-07-28,31570.1,Beauty,Mobile,1916.6,1192.29,8,15332.83,Excellent!!! Will buy again :),0
+1188,Mia Novak,37.0,US,Silver,2022-05-18,2023-02-06,54592.84,Fashion,Partner,354.13,168.5,11,3895.38,"Average quality, delivery was fast.",0
+1189,Luca Kaya,43.0,TR,Silver,2022-01-26,2022-06-03,66760.21,Electronics,Partner,1359.84,966.44,6,8159.03,,1
+1190,Luca Yilmaz,38.0,US,Bronze,2023-10-21,2024-07-26,74458.49,Books,Store,1094.96,701.82,3,3284.87,,1
+1191,Tom Keller,50.0,US,Platinum,2022-07-14,2023-05-11,27695.03,Home,Web,907.67,473.17,5,4538.35,ok,0
+1192,Kerem Brown,43.0,IT,Bronze,2024-07-25,2025-11-08,,Beauty,Mobile,1338.12,737.59,8,10704.96,ok,0
+1193,Lina Novak,42.0,ES,Bronze,2024-06-05,2025-02-24,30030.87,Beauty,Partner,993.58,405.99,6,5961.46,Poor packaging but product works fine.,0
+1194,Sara Garcia,43.0,DE,Silver,2022-05-30,2022-12-27,14693.96,Home,Store,584.22,252.81,11,6426.43,"Great product, very satisfied!",0
+1195,Sara Yilmaz,49.0,NL,Gold,2022-07-29,2023-02-03,34770.34,Electronics,Partner,1153.99,893.89,3,3461.97,Excellent!!! Will buy again :),0
+1196,Sara Rossi,18.0,ES,Bronze,2022-08-23,2023-10-04,24068.25,Home,Web,1854.63,958.72,5,9273.14,Good value for money.,0
+1197,Ali Brown,47.0,UK,Silver,2023-05-07,2023-11-19,18667.91,Sports,Partner,939.87,599.5,10,9398.74,Broken on arrival. Terrible experience.,0
+1198,Zeynep Brown,29.0,FR,Platinum,2022-03-07,2022-08-25,78329.44,Beauty,Mobile,315.45,195.73,8,2523.6,"Average quality, delivery was fast.",0
+1199,Luca Jones,52.0,NL,Silver,2023-01-17,2023-05-15,30803.86,Beauty,Partner,792.67,617.41,11,8719.38,"Great product, very satisfied!",0
+1200,Ali Novak,41.0,FR,Silver,2022-12-19,2023-03-15,120131.03,Electronics,Store,502.04,219.55,10,5020.41,"Not worth the price, disappointed.",0
+1201,Lina Kaya,29.0,US,Silver,2023-05-28,2023-10-01,30525.22,Electronics,Mobile,1484.22,1085.84,4,5936.89,,0
+1202,Kerem Dupont,35.0,FR,Bronze,2023-08-17,2024-04-03,43597.0,Sports,Partner,1416.32,873.04,11,15579.57,"Great product, very satisfied!",0
+1203,Lina Garcia,53.0,NL,Silver,2022-07-06,2023-11-13,13976.3,Home,Store,1676.39,577.4,1,1676.39,Poor packaging but product works fine.,0
+1204,Marie Demir,24.0,DE,Bronze,2023-09-06,2023-10-27,55143.19,Books,Web,1890.16,1029.94,1,1890.16,,0
+1205,Luca Demir,38.0,NL,Silver,2024-01-25,2024-12-18,38463.57,Sports,Store,279.09,101.68,8,2232.72,"Average quality, delivery was fast.",0
+1206,Elena Kaya,60.0,IT,Platinum,2023-03-30,2023-10-09,19298.54,Sports,Web,1482.26,1250.51,9,13340.37,Best purchase of the year #happy,1
+1207,Ada Brown,28.0,NL,Bronze,2023-05-08,2023-12-20,14940.28,Home,Web,664.27,466.36,7,4649.9,"Great product, very satisfied!",0
+1208,Lina Demir,50.0,TR,Bronze,2023-06-06,2023-10-25,,Home,Partner,1847.39,846.65,8,14779.14,,0
+1209,Marie Jones,47.0,TR,Gold,2024-03-23,2024-05-27,53367.01,Home,Mobile,1654.56,1118.67,3,4963.67,Broken on arrival. Terrible experience.,0
+1210,Marie Demir,30.0,FR,Gold,2024-01-29,2024-05-31,46655.34,Fashion,Mobile,472.78,158.53,1,472.78,ok,0
+1211,Mehmet Kaya,46.0,UK,Platinum,2024-07-28,2025-11-18,48058.03,Fashion,Web,1055.31,501.01,5,5276.57,Best purchase of the year #happy,0
+1212,Zeynep Schmidt,,US,Bronze,2024-06-09,2025-01-24,18251.06,Beauty,Mobile,441.42,199.09,2,882.84,Broken on arrival. Terrible experience.,0
+1213,Tom Demir,46.0,TR,Platinum,2023-07-03,2024-01-24,21685.5,Home,Web,262.45,99.89,1,262.45,,0
+1214,Anna Novak,36.0,FR,Gold,2023-07-17,2024-02-12,47914.1,Beauty,Partner,306.96,260.42,6,1841.78,,0
+1215,Omar Keller,49.0,DE,Silver,2022-05-30,2022-08-15,,Beauty,Web,495.8,381.72,8,3966.38,,0
+1216,Mia Garcia,28.0,NL,Bronze,2022-09-13,2023-08-21,167672.11,Fashion,Partner,1397.59,876.1,7,9783.14,"Average quality, delivery was fast.",1
+1217,Mia Kaya,22.0,ES,Bronze,2022-09-02,2022-11-19,27761.43,Electronics,Partner,345.6,157.59,11,3801.64,Good value for money.,1
+1218,Lina Schmidt,34.0,NL,Bronze,2023-04-14,2024-07-13,24130.23,Beauty,Partner,322.48,98.84,4,1289.92,"Average quality, delivery was fast.",0
+1219,Ali Brown,21.0,NL,Gold,2023-06-27,2024-08-19,60512.86,Fashion,Store,943.58,620.82,4,3774.3,Poor packaging but product works fine.,0
+1220,John Jones,42.0,UK,Gold,2022-06-24,2023-04-27,,Sports,Web,1216.44,409.32,9,10947.95,"Average quality, delivery was fast.",0
+1221,Elena Dupont,21.0,NL,Bronze,2022-11-06,2024-01-13,31075.66,Home,Partner,428.07,358.98,7,2996.51,,0
+1222,Mia Novak,53.0,DE,Bronze,2023-06-19,2023-08-14,36762.16,Electronics,Mobile,592.94,467.9,6,3557.65,ok,0
+1223,Tom Garcia,18.0,IT,Bronze,2022-08-23,2023-02-14,21827.83,Home,Mobile,635.17,239.91,9,5716.51,"Great product, very satisfied!",0
+1224,Anna Rossi,29.0,FR,Platinum,2022-05-30,2023-10-04,100277.85,Sports,Web,19.92,8.0,7,139.44,,0
+1225,Ali Brown,65.0,DE,Bronze,2023-04-06,2024-03-11,34722.2,Beauty,Mobile,204.11,134.03,11,2245.25,Best purchase of the year #happy,0
+1226,Marie Yilmaz,57.0,UK,Gold,2024-03-13,2024-10-20,35259.1,Books,Store,754.1,411.23,11,8295.15,Broken on arrival. Terrible experience.,0
+1227,Tom Keller,32.0,IT,Bronze,2023-12-25,2023-12-31,13536.68,Books,Web,1221.53,546.04,10,12215.28,"Average quality, delivery was fast.",0
+1228,Zeynep Schmidt,42.0,ES,Bronze,2024-01-16,2024-10-15,13064.26,Books,Web,1929.52,1072.86,10,19295.17,"Great product, very satisfied!",0
+1229,John Jones,44.0,NL,Silver,2024-08-17,2025-01-09,19638.48,Home,Store,1296.39,522.03,8,10371.12,,1
+1230,Marie Garcia,40.0,US,Silver,2024-02-02,2025-01-03,30128.99,Electronics,Store,332.74,160.65,9,2994.64,Excellent!!! Will buy again :),0
+1231,Mia Yilmaz,29.0,US,Bronze,2024-08-01,2024-11-26,31011.25,Home,Partner,1445.52,1038.7,10,14455.24,"Great product, very satisfied!",1
+1232,Kerem Schmidt,40.0,FR,Bronze,2022-09-29,2023-11-16,,Fashion,Web,1426.32,1101.31,4,5705.27,"Not worth the price, disappointed.",1
+1233,Sara Yilmaz,46.0,DE,Bronze,2022-03-12,2023-04-07,20315.38,Sports,Store,1929.09,730.0,11,21219.99,"Great product, very satisfied!",0
+1234,Tom Novak,,IT,Silver,2023-10-21,2024-09-21,48808.53,Fashion,Partner,1359.24,437.81,2,2718.49,Best purchase of the year #happy,1
+1235,Elena Brown,,NL,Bronze,2022-06-23,2023-10-31,53624.68,Fashion,Store,295.16,135.36,1,295.16,"Average quality, delivery was fast.",1
+1236,John Yilmaz,44.0,DE,Bronze,2023-07-20,2023-10-05,35548.69,Electronics,Store,1846.25,1484.71,9,16616.26,,0
+1237,Marie Garcia,61.0,IT,Gold,2022-12-18,2024-04-16,,Fashion,Store,1498.32,741.88,9,13484.92,"Great product, very satisfied!",1
+1238,Ali Schmidt,27.0,TR,Platinum,2024-02-28,2025-04-07,44768.03,Electronics,Web,1299.71,735.54,2,2599.41,Broken on arrival. Terrible experience.,0
+1239,Luca Jones,42.0,ES,Silver,2022-10-12,2023-10-05,23434.63,Electronics,Partner,1839.13,855.12,4,7356.51,"Average quality, delivery was fast.",0
+1240,Zeynep Kaya,,US,Silver,2023-02-18,2023-07-04,43915.02,Electronics,Partner,1609.96,572.81,9,14489.66,Excellent!!! Will buy again :),0
+1241,Sara Jones,39.0,IT,Silver,2022-12-05,2023-08-12,20124.69,Home,Store,288.96,239.21,3,866.87,,0
+1242,Ada Yilmaz,33.0,DE,Bronze,2024-08-12,2024-10-04,46158.91,Home,Store,558.51,196.5,2,1117.03,"Not worth the price, disappointed.",0
+1243,Omar Rossi,,US,Platinum,2023-12-22,2024-09-20,74123.83,Electronics,Store,1515.03,868.62,6,9090.15,"Not worth the price, disappointed.",1
+1244,Ali Yilmaz,32.0,DE,Bronze,2024-07-11,2024-08-11,77260.29,Sports,Web,152.41,123.97,9,1371.72,Poor packaging but product works fine.,0
+1245,Kerem Jones,43.0,DE,Platinum,2022-03-27,2022-09-07,42979.49,Home,Mobile,1604.68,1014.75,1,1604.68,"Great product, very satisfied!",1
+1246,Luca Schmidt,57.0,DE,Silver,2022-03-21,2022-07-21,23428.71,Electronics,Mobile,1054.09,828.22,9,9486.8,"Average quality, delivery was fast.",0
+1247,Ali Jones,34.0,UK,Silver,2023-11-03,2024-01-11,,Beauty,Store,75.41,27.44,7,527.85,"Average quality, delivery was fast.",0
+1248,Luca Rossi,29.0,TR,Bronze,2024-05-11,2024-10-17,60147.18,Books,Partner,1196.9,566.24,8,9575.2,Excellent!!! Will buy again :),1
+1249,Kerem Kaya,32.0,UK,Bronze,2024-05-05,2024-11-03,39174.07,Beauty,Store,1831.64,1007.78,6,10989.84,"Not worth the price, disappointed.",0
