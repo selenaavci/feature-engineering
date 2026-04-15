@@ -82,22 +82,50 @@ def show_method(key):
     st.markdown(f"**Ne zaman?** {nezaman}")
 
 
+DATE_NAME_HINTS = ("tarih", "date", "datum", "zaman", "time", "day",
+                   "_dt", "dt_", "created", "updated", "signup", "birth", "dogum")
+
+
+def _parse_date_ratio(series: pd.Series) -> float:
+    sample = series.dropna().astype(str).head(200)
+    if len(sample) == 0:
+        return 0.0
+    import warnings
+    best = 0
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        for kwargs in ({}, {"dayfirst": True}, {"yearfirst": True}):
+            try:
+                parsed = pd.to_datetime(sample, errors="coerce", **kwargs)
+                best = max(best, parsed.notna().sum())
+            except Exception:
+                pass
+    return best / len(sample)
+
+
 def detect_column_types(df: pd.DataFrame) -> dict:
     types = {}
     for col in df.columns:
         s = df[col]
-        if pd.api.types.is_numeric_dtype(s):
-            types[col] = "numeric"
-            continue
+        name_hint = any(h in str(col).lower() for h in DATE_NAME_HINTS)
+
         if pd.api.types.is_datetime64_any_dtype(s):
             types[col] = "datetime"
             continue
+
         if s.dtype == object:
-            sample = s.dropna().astype(str).head(20)
-            parsed = pd.to_datetime(sample, errors="coerce")
-            if parsed.notna().sum() >= max(3, int(0.7 * len(sample))):
+            ratio = _parse_date_ratio(s)
+            threshold = 0.4 if name_hint else 0.7
+            if ratio >= threshold:
                 types[col] = "datetime"
                 continue
+
+        if pd.api.types.is_numeric_dtype(s):
+            types[col] = "numeric"
+            continue
+
+        if s.dtype == object:
+            sample = s.dropna().astype(str).head(50)
             avg_len = sample.str.len().mean() if len(sample) else 0
             nunique = s.nunique(dropna=True)
             if avg_len > 20 or nunique > max(30, 0.5 * len(s)):
