@@ -323,7 +323,7 @@ with tab2:
     num_cols  = [c for c, t in col_types.items() if t == "numeric"]
 
     if date_cols:
-        st.markdown("### 📅 Tarih Sütunları")
+        st.markdown("### Tarih Sütunları")
         for col in date_cols:
             with st.container(border=True):
                 st.markdown(f"**Sütun:** `{col}`")
@@ -336,7 +336,7 @@ with tab2:
                 )
 
     if text_cols:
-        st.markdown("### 🔤 Metin Sütunları")
+        st.markdown("### Metin Sütunları")
         for col in text_cols:
             with st.container(border=True):
                 st.markdown(f"**Sütun:** `{col}`")
@@ -349,7 +349,7 @@ with tab2:
                 )
 
     if cat_cols:
-        st.markdown("### 🏷️ Kategorik Sütunlar")
+        st.markdown("### Kategorik Sütunlar")
         for col in cat_cols:
             with st.container(border=True):
                 st.markdown(f"**Sütun:** `{col}` &nbsp;·&nbsp; "
@@ -362,7 +362,7 @@ with tab2:
                 )
 
     if num_cols:
-        st.markdown("### 🔢 Sayısal Sütunlar")
+        st.markdown("### Sayısal Sütunlar")
         for col in num_cols:
             with st.container(border=True):
                 st.markdown(f"**Sütun:** `{col}` &nbsp;·&nbsp; "
