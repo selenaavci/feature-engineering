@@ -8,16 +8,9 @@ import streamlit as st
 
 st.set_page_config(page_title="Feature Engineering Agent", page_icon="🛠️", layout="wide")
 
-st.markdown("""
-<style>
-.main-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 0; }
-.subtitle { color: #6b7280; margin-top: 0; margin-bottom: 1rem; }
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown('<p class="main-title">Feature Engineering Agent</p>', unsafe_allow_html=True)
-st.markdown('<p class="subtitle">Ham veriyi tek tıkla modele hazır, anlamlı özelliklere dönüştür.</p>',
-            unsafe_allow_html=True)
+st.title("Feature Engineering Agent")
+st.caption("Ham veriyi tek tıkla modele hazır, anlamlı özelliklere dönüştür. "
+           "Her dönüşümün 'Nedir?' ve 'Ne zaman?' açıklaması ile — ML bilgisi gerekmez.")
 
 if "df_original" not in st.session_state:
     st.session_state.df_original = None
@@ -25,6 +18,68 @@ if "df_transformed" not in st.session_state:
     st.session_state.df_transformed = None
 if "log" not in st.session_state:
     st.session_state.log = []
+
+
+METHOD_DOCS = {
+    "year":    ("Yıl bilgisini çıkarır (örn. 2023).",
+                "Verinin yıllara göre değişip değişmediğini incelemek istediğinde."),
+    "month":   ("Ay bilgisini çıkarır (1–12).",
+                "Mevsimsellik veya aylık trend aramak istediğinde (ör. satış, kampanya)."),
+    "day":     ("Ayın günü (1–31).",
+                "Ay başı / ay sonu gibi günlük desenler aradığında."),
+    "dow":     ("Haftanın günü (0=Pzt, 6=Paz).",
+                "Hafta içi/hafta sonu davranış farkını yakalamak istediğinde."),
+    "weekend": ("Hafta sonu mu? Evet/Hayır (1/0) değeri üretir.",
+                "Hafta sonları farklı davranış bekliyorsan hızlı bir sinyaldir."),
+    "quarter": ("Yılın çeyreği (Q1–Q4).",
+                "Çeyrek bazlı finans/planlama analizleri için uygundur."),
+    "week":    ("Yılın haftası (1–53).",
+                "Haftalık dönemsellik (ör. kampanya haftaları) önemliyse."),
+
+    "length":  ("Metnin karakter sayısını hesaplar.",
+                "Kısa/uzun metinlerin davranışı farklıysa (ör. kısa yorum = olumsuz)."),
+    "words":   ("Kelime sayısını hesaplar.",
+                "Detaylı açıklamaların performansa etkisini ölçmek istediğinde."),
+    "empty":   ("Metin boş veya eksik mi? 1/0 bayrağı üretir.",
+                "Yorum bırakmayan müşteriler farklı davranıyorsa önemli bir sinyaldir."),
+    "special": ("Metinde özel karakter (!, @, #, …) var mı?",
+                "Abartılı ifadeler / spam içeriği ayırmak istediğinde."),
+    "upper":   ("Metindeki büyük harf oranı.",
+                "BÜYÜK HARFLE yazan kullanıcıların (ör. öfkeli yorumlar) sinyali olabilir."),
+
+    "frequency":  ("Her kategori için görülme oranı (0–1). "
+                   "Örn. 'TR' müşterilerin %40'ıysa değer 0.40 olur.",
+                   "Modele kategoriyi sayısal olarak tanıtmanın basit bir yolu. "
+                   "Çok fazla kategori varsa one-hot yerine tercih edilir."),
+    "rare":       ("Toplam verinin %2'sinden az görülen kategoriler için 1, diğerleri 0.",
+                   "Az sayıda görülen değerlerin modeli yanıltmasını önler."),
+    "group_size": ("Her kategorinin kaç satırda geçtiği.",
+                   "Popüler/az kullanılan grupları ayırt etmek için."),
+    "onehot":     ("Her kategori değeri için ayrı bir 0/1 sütun üretir.",
+                   "Kategori sayısı az (≤10) ise en güvenli ve standart kodlamadır. "
+                   "Çok fazla kategori varsa sütun patlamasına yol açar — frekans kullan."),
+
+    "log":          ("log(1+x) dönüşümü uygular.",
+                     "Gelir, fiyat gibi çok çarpık (uçları uzun) sayılar için. "
+                     "Uç değerlerin etkisini azaltır, dağılımı normale yaklaştırır."),
+    "missing_flag": ("Değer eksikse 1, değilse 0.",
+                     "Eksik olmak başlı başına bilgiyse (örn. geliri bildirmeyenler). "
+                     "Eksik doldurma yaptığında bu bayrak sinyali korur."),
+    "bin":          ("Sayıyı eşit büyüklükte gruplara (çeyrek/beşli) böler.",
+                     "Sürekli sayıyı 'düşük/orta/yüksek' gibi gruplara indirgemek için. "
+                     "Doğrusal olmayan ilişkileri yakalar."),
+    "zscore":       ("(x - ortalama) / standart sapma. Standart normalleştirme.",
+                     "Farklı ölçekteki sayıları karşılaştırılabilir hale getirir. "
+                     "Mesafeye dayalı modeller (KNN, kümeleme) için önemli."),
+    "threshold":    ("Eşik üstü için 1, altı için 0 bayrağı üretir.",
+                     "İş kuralları (ör. 'gelir > 50K ise premium') modellemek için."),
+}
+
+
+def show_method(key):
+    nedir, nezaman = METHOD_DOCS[key]
+    st.markdown(f"**Nedir?** {nedir}")
+    st.markdown(f"**Ne zaman?** {nezaman}")
 
 
 def detect_column_types(df: pd.DataFrame) -> dict:
@@ -58,23 +113,35 @@ def log_action(msg: str):
     st.session_state.log.append(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
 
 
+def read_any(uploaded):
+    name = uploaded.name.lower()
+    if name.endswith(".csv"):
+        return pd.read_csv(uploaded)
+    if name.endswith(".xlsx") or name.endswith(".xls"):
+        return pd.read_excel(uploaded)
+    if name.endswith(".xml"):
+        return pd.read_xml(uploaded)
+    if name.endswith(".json"):
+        return pd.read_json(uploaded)
+    raise ValueError(f"Desteklenmeyen dosya tipi: {name}")
+
+
 def add_date_features(df, col, opts):
     s = pd.to_datetime(df[col], errors="coerce")
     created = []
-    if "year" in opts:
-        df[f"{col}_year"] = s.dt.year; created.append(f"{col}_year")
-    if "month" in opts:
-        df[f"{col}_month"] = s.dt.month; created.append(f"{col}_month")
-    if "day" in opts:
-        df[f"{col}_day"] = s.dt.day; created.append(f"{col}_day")
-    if "dow" in opts:
-        df[f"{col}_dayofweek"] = s.dt.dayofweek; created.append(f"{col}_dayofweek")
-    if "weekend" in opts:
-        df[f"{col}_is_weekend"] = s.dt.dayofweek.isin([5, 6]).astype("Int64"); created.append(f"{col}_is_weekend")
-    if "quarter" in opts:
-        df[f"{col}_quarter"] = s.dt.quarter; created.append(f"{col}_quarter")
-    if "week" in opts:
-        df[f"{col}_week"] = s.dt.isocalendar().week.astype("Int64"); created.append(f"{col}_week")
+    mapping = {
+        "year": (f"{col}_year", s.dt.year),
+        "month": (f"{col}_month", s.dt.month),
+        "day": (f"{col}_day", s.dt.day),
+        "dow": (f"{col}_dayofweek", s.dt.dayofweek),
+        "weekend": (f"{col}_is_weekend", s.dt.dayofweek.isin([5, 6]).astype("Int64")),
+        "quarter": (f"{col}_quarter", s.dt.quarter),
+        "week": (f"{col}_week", s.dt.isocalendar().week.astype("Int64")),
+    }
+    for k in opts:
+        name, vals = mapping[k]
+        df[name] = vals
+        created.append(name)
     return created
 
 
@@ -97,8 +164,7 @@ def add_text_features(df, col, opts):
 def add_categorical_features(df, col, opts):
     created = []
     if "frequency" in opts:
-        freq = df[col].map(df[col].value_counts(normalize=True))
-        df[f"{col}_freq"] = freq; created.append(f"{col}_freq")
+        df[f"{col}_freq"] = df[col].map(df[col].value_counts(normalize=True)); created.append(f"{col}_freq")
     if "rare" in opts:
         counts = df[col].value_counts()
         rare = counts[counts < max(2, int(0.02 * len(df)))].index
@@ -136,20 +202,51 @@ def add_numeric_features(df, col, opts, threshold=None, bins=4):
     return created
 
 
+def render_method_group(title, col, options_spec, apply_fn, extra_inputs=None):
+    st.markdown(f"#### {title}")
+    chosen = []
+    for key, label in options_spec:
+        cols = st.columns([1, 6])
+        with cols[0]:
+            checked = st.checkbox(" ", key=f"{col}_{key}_chk",
+                                  label_visibility="collapsed")
+        with cols[1]:
+            with st.expander(label, expanded=False):
+                show_method(key)
+        if checked:
+            chosen.append(key)
+    extra = {}
+    if extra_inputs:
+        extra = extra_inputs(chosen)
+    if st.button("Seçilenleri Uygula", key=f"apply_{col}_{title}",
+                 type="primary", use_container_width=True):
+        if not chosen:
+            st.warning("En az bir yöntem seç.")
+        else:
+            created = apply_fn(chosen, extra)
+            if created:
+                st.session_state.df_transformed = st.session_state.df_transformed
+                log_action(f"[{title}] {col} -> {', '.join(created)}")
+                st.success(f"Oluşturuldu: {', '.join(created)}")
+            else:
+                st.warning("Sütun uygun değil, özellik üretilemedi.")
+
+
 with st.sidebar:
     st.header("1. Veri Yükle")
-    uploaded = st.file_uploader("CSV veya XLSX", type=["csv", "xlsx"])
+    st.caption("Desteklenen formatlar: CSV, XLSX, XLS, XML, JSON. Maks. 5 GB.")
+    uploaded = st.file_uploader("Dosya seç", type=["csv", "xlsx", "xls", "xml", "json"])
     use_sample = st.button("Örnek veri kullan", use_container_width=True)
 
     if uploaded is not None:
-        if uploaded.name.endswith(".csv"):
-            df = pd.read_csv(uploaded)
-        else:
-            df = pd.read_excel(uploaded)
-        st.session_state.df_original = df.copy()
-        st.session_state.df_transformed = df.copy()
-        st.session_state.log = []
-        log_action(f"Veri yüklendi: {df.shape[0]} satır x {df.shape[1]} sütun")
+        try:
+            df = read_any(uploaded)
+            st.session_state.df_original = df.copy()
+            st.session_state.df_transformed = df.copy()
+            st.session_state.log = []
+            log_action(f"Veri yüklendi: {df.shape[0]} satır x {df.shape[1]} sütun")
+        except Exception as e:
+            st.error(f"Yükleme hatası: {e}")
 
     if use_sample:
         try:
@@ -166,6 +263,16 @@ with st.sidebar:
         if st.button("Sıfırla", use_container_width=True):
             st.session_state.df_transformed = st.session_state.df_original.copy()
             st.session_state.log = []
+
+    with st.expander("ℹ️ Nasıl kullanılır?"):
+        st.markdown(
+            "1. Dosyanı yükle veya örnek veriyi kullan.\n"
+            "2. **Akıllı Öneriler** sekmesinde sütunlarını gör; her yöntemin "
+            "'Nedir?' / 'Ne zaman?' açıklamasını oku.\n"
+            "3. İstediklerini seç → *Seçilenleri Uygula*.\n"
+            "4. **Önizleme** ile yeni sütunları kontrol et.\n"
+            "5. **Dışa Aktar** ile dönüştürülmüş veriyi indir."
+        )
 
 if st.session_state.df_transformed is None:
     st.info("Soldan bir dataset yükle veya örnek veriyi kullan.")
@@ -195,114 +302,134 @@ with tab1:
     })
     st.dataframe(tdf, use_container_width=True, hide_index=True)
 
+    with st.expander("Sütun tipleri ne anlama geliyor?"):
+        st.markdown(
+            "- **numeric**: sayısal değer (fiyat, yaş, miktar)\n"
+            "- **categorical**: sınırlı sayıda kategori (ülke, segment)\n"
+            "- **datetime**: tarih / saat\n"
+            "- **text**: serbest metin (yorum, açıklama)\n\n"
+            "Otomatik tespit; yanlış olduğunu düşünürsen manuel sekmeyi kullanabilirsin."
+        )
+
     st.subheader("Veri Önizleme")
     st.dataframe(df.head(15), use_container_width=True)
 
 with tab2:
-    st.caption("Sistem, sütun tiplerine göre otomatik öneriler sunar. Uygulamak istediklerini seç ve tıkla.")
+    st.caption("Sütununu seç, uygun yöntemleri incele — her birinin açıklaması var.")
 
     date_cols = [c for c, t in col_types.items() if t == "datetime"]
-    if date_cols:
-        st.markdown("### Tarih Özellikleri")
-        for col in date_cols:
-            with st.expander(f"`{col}` için öneriler"):
-                opts = st.multiselect(
-                    "Seç:",
-                    options=[("year", "Yıl"), ("month", "Ay"), ("day", "Gün"),
-                             ("dow", "Haftanın günü"), ("weekend", "Hafta sonu flag"),
-                             ("quarter", "Çeyrek"), ("week", "Yılın haftası")],
-                    format_func=lambda x: x[1], key=f"date_{col}",
-                )
-                if st.button("Uygula", key=f"btn_date_{col}"):
-                    keys = [o[0] for o in opts]
-                    created = add_date_features(df, col, keys)
-                    st.session_state.df_transformed = df
-                    log_action(f"[date] {col} -> {', '.join(created)}")
-                    st.success(f"Oluşturuldu: {', '.join(created)}")
-
     text_cols = [c for c, t in col_types.items() if t == "text"]
+    cat_cols  = [c for c, t in col_types.items() if t == "categorical"]
+    num_cols  = [c for c, t in col_types.items() if t == "numeric"]
+
+    if date_cols:
+        st.markdown("### 📅 Tarih Sütunları")
+        for col in date_cols:
+            with st.container(border=True):
+                st.markdown(f"**Sütun:** `{col}`")
+                spec = [("year","Yıl"),("month","Ay"),("day","Gün"),
+                        ("dow","Haftanın günü"),("weekend","Hafta sonu bayrağı"),
+                        ("quarter","Çeyrek"),("week","Yılın haftası")]
+                render_method_group(
+                    "Tarih", col, spec,
+                    apply_fn=lambda keys, extra, c=col: add_date_features(df, c, keys),
+                )
+
     if text_cols:
-        st.markdown("### Metin Özellikleri")
+        st.markdown("### 🔤 Metin Sütunları")
         for col in text_cols:
-            with st.expander(f"`{col}` için öneriler"):
-                opts = st.multiselect(
-                    "Seç:",
-                    options=[("length", "Karakter uzunluğu"), ("words", "Kelime sayısı"),
-                             ("empty", "Boş metin flag"), ("special", "Özel karakter var mı"),
-                             ("upper", "Büyük harf oranı")],
-                    format_func=lambda x: x[1], key=f"text_{col}",
+            with st.container(border=True):
+                st.markdown(f"**Sütun:** `{col}`")
+                spec = [("length","Karakter uzunluğu"),("words","Kelime sayısı"),
+                        ("empty","Boş metin bayrağı"),("special","Özel karakter bayrağı"),
+                        ("upper","Büyük harf oranı")]
+                render_method_group(
+                    "Metin", col, spec,
+                    apply_fn=lambda keys, extra, c=col: add_text_features(df, c, keys),
                 )
-                if st.button("Uygula", key=f"btn_text_{col}"):
-                    keys = [o[0] for o in opts]
-                    created = add_text_features(df, col, keys)
-                    st.session_state.df_transformed = df
-                    log_action(f"[text] {col} -> {', '.join(created)}")
-                    st.success(f"Oluşturuldu: {', '.join(created)}")
 
-    cat_cols = [c for c, t in col_types.items() if t == "categorical"]
     if cat_cols:
-        st.markdown("### Kategorik Özellikler")
+        st.markdown("### 🏷️ Kategorik Sütunlar")
         for col in cat_cols:
-            with st.expander(f"`{col}` için öneriler"):
-                opts = st.multiselect(
-                    "Seç:",
-                    options=[("frequency", "Frekans kodlama"), ("rare", "Nadir kategori flag"),
-                             ("group_size", "Grup boyutu"), ("onehot", "One-hot encoding")],
-                    format_func=lambda x: x[1], key=f"cat_{col}",
+            with st.container(border=True):
+                st.markdown(f"**Sütun:** `{col}` &nbsp;·&nbsp; "
+                            f"{df[col].nunique()} benzersiz değer")
+                spec = [("frequency","Frekans kodlama"),("rare","Nadir kategori bayrağı"),
+                        ("group_size","Grup boyutu"),("onehot","One-hot encoding")]
+                render_method_group(
+                    "Kategorik", col, spec,
+                    apply_fn=lambda keys, extra, c=col: add_categorical_features(df, c, keys),
                 )
-                if st.button("Uygula", key=f"btn_cat_{col}"):
-                    keys = [o[0] for o in opts]
-                    created = add_categorical_features(df, col, keys)
-                    st.session_state.df_transformed = df
-                    log_action(f"[cat] {col} -> {', '.join(created)}")
-                    st.success(f"Oluşturuldu: {', '.join(created)}")
 
-    num_cols = [c for c, t in col_types.items() if t == "numeric"]
     if num_cols:
-        st.markdown("### Sayısal Özellikler")
+        st.markdown("### 🔢 Sayısal Sütunlar")
         for col in num_cols:
-            with st.expander(f"`{col}` için öneriler"):
-                opts = st.multiselect(
-                    "Seç:",
-                    options=[("log", "Log dönüşüm"), ("missing_flag", "Eksik flag"),
-                             ("bin", "Binning (çeyrekler)"), ("zscore", "Z-skor"),
-                             ("threshold", "Eşik üstü flag")],
-                    format_func=lambda x: x[1], key=f"num_{col}",
+            with st.container(border=True):
+                st.markdown(f"**Sütun:** `{col}` &nbsp;·&nbsp; "
+                            f"ort={df[col].mean():.2f}, medyan={df[col].median():.2f}")
+                spec = [("log","Log dönüşüm"),("missing_flag","Eksik değer bayrağı"),
+                        ("bin","Binning (gruplara böl)"),("zscore","Z-skor (standartlaştır)"),
+                        ("threshold","Eşik üstü bayrağı")]
+
+                def extra_inputs_factory(c=col):
+                    def _extra(chosen):
+                        out = {}
+                        if "threshold" in chosen:
+                            out["threshold"] = st.number_input(
+                                f"{c} için eşik değer",
+                                value=float(pd.to_numeric(df[c], errors='coerce').median()),
+                                key=f"thr_{c}",
+                            )
+                        if "bin" in chosen:
+                            out["bins"] = st.slider("Bin sayısı", 2, 10, 4, key=f"bins_{c}")
+                        return out
+                    return _extra
+
+                render_method_group(
+                    "Sayısal", col, spec,
+                    apply_fn=lambda keys, extra, c=col: add_numeric_features(
+                        df, c, keys,
+                        threshold=extra.get("threshold"),
+                        bins=extra.get("bins", 4),
+                    ),
+                    extra_inputs=extra_inputs_factory(),
                 )
-                thr = None
-                bins = 4
-                if any(o[0] == "threshold" for o in opts):
-                    thr = st.number_input(f"{col} için eşik", value=float(df[col].median()),
-                                          key=f"thr_{col}")
-                if any(o[0] == "bin" for o in opts):
-                    bins = st.slider("Bin sayısı", 2, 10, 4, key=f"bins_{col}")
-                if st.button("Uygula", key=f"btn_num_{col}"):
-                    keys = [o[0] for o in opts]
-                    created = add_numeric_features(df, col, keys, threshold=thr, bins=bins)
-                    st.session_state.df_transformed = df
-                    log_action(f"[num] {col} -> {', '.join(created)}")
-                    st.success(f"Oluşturuldu: {', '.join(created)}")
 
 with tab3:
-    st.caption("Kodlama gerekmez. Sütunları seç, operasyonu seç.")
+    st.caption("Kendi formülünü kur: iki sütunu birleştir, bir koşul tanımla veya metin ara.")
+
+    OP_DOCS = {
+        "Oran (a/b)":   ("A sütununu B sütununa böler.",
+                         "İki büyüklük arasındaki göreli ilişki önemliyse "
+                         "(ör. gelir / yaş, kar / maliyet)."),
+        "Fark (a-b)":   ("A'dan B'yi çıkarır.",
+                         "Değişim veya marj hesaplarken (ör. fiyat - maliyet = kar)."),
+        "Çarpım (a*b)": ("İki sütunu çarpar.",
+                         "Toplam büyüklük elde etmek için (ör. fiyat * adet = tutar)."),
+        "Toplam (a+b)": ("İki sütunu toplar.",
+                         "Birleşik bir gösterge oluştururken."),
+        "Flag (koşul)": ("Bir sayısal koşul sağlanıyorsa 1, değilse 0.",
+                         "İş kurallarını sinyale çevirmek için (ör. gelir > 50K)."),
+        "Metin içerir": ("Bir kelime metinde geçiyor mu? 1/0.",
+                         "Anahtar kelime bazlı bayraklar (ör. yorum 'iade' içeriyor mu?)."),
+    }
+
+    op = st.selectbox("Operasyon", list(OP_DOCS.keys()))
+    nedir, nezaman = OP_DOCS[op]
+    st.info(f"**Nedir?** {nedir}\n\n**Ne zaman?** {nezaman}")
+
     num_cols_now = df.select_dtypes(include=[np.number]).columns.tolist()
-    op = st.selectbox("Operasyon", ["Oran (a/b)", "Fark (a-b)", "Çarpım (a*b)",
-                                    "Toplam (a+b)", "Flag (koşul)", "Metin içerir"])
 
     if op in ["Oran (a/b)", "Fark (a-b)", "Çarpım (a*b)", "Toplam (a+b)"]:
         c1, c2 = st.columns(2)
         a = c1.selectbox("Sütun A", num_cols_now, key="ma")
         b = c2.selectbox("Sütun B", num_cols_now, key="mb")
         name = st.text_input("Yeni sütun adı", value=f"{a}_{op.split()[0].lower()}_{b}")
-        if st.button("Oluştur", key="btn_manual_arith"):
-            if op.startswith("Oran"):
-                df[name] = df[a] / df[b].replace(0, np.nan)
-            elif op.startswith("Fark"):
-                df[name] = df[a] - df[b]
-            elif op.startswith("Çarpım"):
-                df[name] = df[a] * df[b]
-            else:
-                df[name] = df[a] + df[b]
+        if st.button("Oluştur", key="btn_manual_arith", type="primary"):
+            if op.startswith("Oran"):     df[name] = df[a] / df[b].replace(0, np.nan)
+            elif op.startswith("Fark"):   df[name] = df[a] - df[b]
+            elif op.startswith("Çarpım"): df[name] = df[a] * df[b]
+            else:                         df[name] = df[a] + df[b]
             st.session_state.df_transformed = df
             log_action(f"[manual] {name} = {a} {op} {b}")
             st.success(f"`{name}` oluşturuldu.")
@@ -312,7 +439,7 @@ with tab3:
         cond = st.selectbox("Koşul", [">", ">=", "<", "<=", "=="])
         val = st.number_input("Değer", value=float(df[col].median()))
         name = st.text_input("Yeni sütun adı", value=f"{col}_flag")
-        if st.button("Oluştur", key="btn_manual_flag"):
+        if st.button("Oluştur", key="btn_manual_flag", type="primary"):
             expr = {">": df[col] > val, ">=": df[col] >= val, "<": df[col] < val,
                     "<=": df[col] <= val, "==": df[col] == val}[cond]
             df[name] = expr.astype(int)
@@ -325,7 +452,7 @@ with tab3:
         col = st.selectbox("Sütun", txt_cols, key="tcol")
         kw = st.text_input("Aranacak kelime", value="good")
         name = st.text_input("Yeni sütun adı", value=f"{col}_contains_{kw}")
-        if st.button("Oluştur", key="btn_manual_text"):
+        if st.button("Oluştur", key="btn_manual_text", type="primary"):
             df[name] = df[col].astype(str).str.contains(kw, case=False, na=False).astype(int)
             st.session_state.df_transformed = df
             log_action(f"[manual] {name} = {col}.contains('{kw}')")
