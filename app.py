@@ -20,6 +20,8 @@ if "log" not in st.session_state:
     st.session_state.log = []
 if "type_overrides" not in st.session_state:
     st.session_state.type_overrides = {}
+if "data_version" not in st.session_state:
+    st.session_state.data_version = 0
 
 
 METHOD_DOCS = {
@@ -278,6 +280,8 @@ with st.sidebar:
             st.session_state.df_original = df.copy()
             st.session_state.df_transformed = df.copy()
             st.session_state.log = []
+            st.session_state.type_overrides = {}
+            st.session_state.data_version += 1
             log_action(f"Veri yüklendi: {df.shape[0]} satır x {df.shape[1]} sütun")
         except Exception as e:
             st.error(f"Yükleme hatası: {e}")
@@ -288,6 +292,8 @@ with st.sidebar:
             st.session_state.df_original = df.copy()
             st.session_state.df_transformed = df.copy()
             st.session_state.log = []
+            st.session_state.type_overrides = {}
+            st.session_state.data_version += 1
             log_action(f"Örnek veri yüklendi: {df.shape[0]} satır x {df.shape[1]} sütun")
         except FileNotFoundError:
             st.error("sample_data.csv bulunamadı.")
@@ -297,6 +303,7 @@ with st.sidebar:
         if st.button("Sıfırla", use_container_width=True):
             st.session_state.df_transformed = st.session_state.df_original.copy()
             st.session_state.log = []
+            st.session_state.type_overrides = {}
 
     with st.expander("ℹ️ Nasıl kullanılır?"):
         st.markdown(
@@ -348,7 +355,7 @@ with tab1:
         column_config={"type": st.column_config.SelectboxColumn(
             "type", options=TYPE_OPTS, required=True,
         )},
-        key="type_editor",
+        key=f"type_editor_v{st.session_state.data_version}",
     )
     new_overrides = {r["column"]: r["type"] for _, r in edited.iterrows()}
     if new_overrides != {c: col_types[c] for c in col_types}:
