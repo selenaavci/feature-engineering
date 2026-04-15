@@ -18,6 +18,8 @@ if "df_transformed" not in st.session_state:
     st.session_state.df_transformed = None
 if "log" not in st.session_state:
     st.session_state.log = []
+if "type_overrides" not in st.session_state:
+    st.session_state.type_overrides = {}
 
 
 METHOD_DOCS = {
@@ -115,10 +117,14 @@ def detect_column_types(df: pd.DataFrame) -> dict:
 
         if s.dtype == object:
             ratio = _parse_date_ratio(s)
-            threshold = 0.4 if name_hint else 0.7
+            threshold = 0.2 if name_hint else 0.7
             if ratio >= threshold:
                 types[col] = "datetime"
                 continue
+
+        if name_hint and s.dtype == object:
+            types[col] = "datetime"
+            continue
 
         if pd.api.types.is_numeric_dtype(s):
             types[col] = "numeric"
@@ -308,6 +314,9 @@ if st.session_state.df_transformed is None:
 
 df = st.session_state.df_transformed
 col_types = detect_column_types(st.session_state.df_original)
+for _c, _t in st.session_state.type_overrides.items():
+    if _c in col_types:
+        col_types[_c] = _t
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "Genel Bakış", "Akıllı Öneriler", "Manuel Özellik",
@@ -322,13 +331,31 @@ with tab1:
     c4.metric("Eksik Hücre", int(df.isna().sum().sum()))
 
     st.subheader("Sütun Tipleri")
-    tdf = pd.DataFrame({
-        "column": list(col_types.keys()),
-        "detected_type": list(col_types.values()),
-        "missing": [st.session_state.df_original[c].isna().sum() for c in col_types],
-        "unique": [st.session_state.df_original[c].nunique() for c in col_types],
-    })
-    st.dataframe(tdf, use_container_width=True, hide_index=True)
+    st.caption("Tip yanlış algılandıysa aşağıdan düzeltebilirsin. Değişiklik diğer sekmeleri anında günceller.")
+    TYPE_OPTS = ["numeric", "categorical", "datetime", "text"]
+    edit_rows = []
+    for c in col_types:
+        edit_rows.append({
+            "column": c,
+            "type": col_types[c],
+            "missing": int(st.session_state.df_original[c].isna().sum()),
+            "unique": int(st.session_state.df_original[c].nunique()),
+        })
+    edited = st.data_editor(
+        pd.DataFrame(edit_rows),
+        use_container_width=True, hide_index=True, num_rows="fixed",
+        disabled=["column", "missing", "unique"],
+        column_config={"type": st.column_config.SelectboxColumn(
+            "type", options=TYPE_OPTS, required=True,
+        )},
+        key="type_editor",
+    )
+    new_overrides = {r["column"]: r["type"] for _, r in edited.iterrows()}
+    if new_overrides != {c: col_types[c] for c in col_types}:
+        st.session_state.type_overrides = {
+            c: t for c, t in new_overrides.items() if c in col_types
+        }
+        st.rerun()
 
     with st.expander("Sütun tipleri ne anlama geliyor?"):
         st.markdown(
