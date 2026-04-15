@@ -1,7 +1,3 @@
-"""
-Feature Engineering Agent — Streamlit Cloud versiyonu
-Ham veriyi modele hazır, anlamlı feature'lara dönüştürür.
-"""
 import io
 import re
 from datetime import datetime
@@ -12,22 +8,17 @@ import streamlit as st
 
 st.set_page_config(page_title="Feature Engineering Agent", page_icon="🛠️", layout="wide")
 
-# ---------- Stil ----------
 st.markdown("""
 <style>
 .main-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 0; }
 .subtitle { color: #6b7280; margin-top: 0; margin-bottom: 1rem; }
-.badge { display: inline-block; padding: 2px 8px; border-radius: 8px;
-         background: #eef2ff; color: #3730a3; font-size: 0.75rem; margin-right: 4px; }
-.success-box { padding: 10px 14px; border-radius: 10px; background: #ecfdf5; border: 1px solid #a7f3d0; }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="main-title">🛠️ Feature Engineering Agent</p>', unsafe_allow_html=True)
+st.markdown('<p class="main-title">Feature Engineering Agent</p>', unsafe_allow_html=True)
 st.markdown('<p class="subtitle">Ham veriyi tek tıkla modele hazır, anlamlı özelliklere dönüştür.</p>',
             unsafe_allow_html=True)
 
-# ---------- Session State ----------
 if "df_original" not in st.session_state:
     st.session_state.df_original = None
 if "df_transformed" not in st.session_state:
@@ -35,9 +26,6 @@ if "df_transformed" not in st.session_state:
 if "log" not in st.session_state:
     st.session_state.log = []
 
-# ============================================================
-# Yardımcı fonksiyonlar
-# ============================================================
 
 def detect_column_types(df: pd.DataFrame) -> dict:
     types = {}
@@ -46,7 +34,6 @@ def detect_column_types(df: pd.DataFrame) -> dict:
         if pd.api.types.is_numeric_dtype(s):
             types[col] = "numeric"
             continue
-        # Tarih tespiti
         if pd.api.types.is_datetime64_any_dtype(s):
             types[col] = "datetime"
             continue
@@ -149,13 +136,10 @@ def add_numeric_features(df, col, opts, threshold=None, bins=4):
     return created
 
 
-# ============================================================
-# Sidebar: veri yükleme
-# ============================================================
 with st.sidebar:
-    st.header("📥 1. Veri Yükle")
+    st.header("1. Veri Yükle")
     uploaded = st.file_uploader("CSV veya XLSX", type=["csv", "xlsx"])
-    use_sample = st.button("🎲 Örnek veri kullan", use_container_width=True)
+    use_sample = st.button("Örnek veri kullan", use_container_width=True)
 
     if uploaded is not None:
         if uploaded.name.endswith(".csv"):
@@ -165,7 +149,7 @@ with st.sidebar:
         st.session_state.df_original = df.copy()
         st.session_state.df_transformed = df.copy()
         st.session_state.log = []
-        log_action(f"Veri yüklendi: {df.shape[0]} satır × {df.shape[1]} sütun")
+        log_action(f"Veri yüklendi: {df.shape[0]} satır x {df.shape[1]} sütun")
 
     if use_sample:
         try:
@@ -173,32 +157,28 @@ with st.sidebar:
             st.session_state.df_original = df.copy()
             st.session_state.df_transformed = df.copy()
             st.session_state.log = []
-            log_action(f"Örnek veri yüklendi: {df.shape[0]} satır × {df.shape[1]} sütun")
+            log_action(f"Örnek veri yüklendi: {df.shape[0]} satır x {df.shape[1]} sütun")
         except FileNotFoundError:
             st.error("sample_data.csv bulunamadı.")
 
     st.divider()
     if st.session_state.df_transformed is not None:
-        if st.button("♻️ Sıfırla", use_container_width=True):
+        if st.button("Sıfırla", use_container_width=True):
             st.session_state.df_transformed = st.session_state.df_original.copy()
             st.session_state.log = []
 
-# ============================================================
-# Ana akış
-# ============================================================
 if st.session_state.df_transformed is None:
-    st.info("👈 Soldan bir dataset yükle veya örnek veriyi kullan.")
+    st.info("Soldan bir dataset yükle veya örnek veriyi kullan.")
     st.stop()
 
 df = st.session_state.df_transformed
 col_types = detect_column_types(st.session_state.df_original)
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "📊 Genel Bakış", "💡 Akıllı Öneriler", "🛠️ Manuel Özellik",
-    "🔍 Önizleme & Log", "⬇️ Dışa Aktar",
+    "Genel Bakış", "Akıllı Öneriler", "Manuel Özellik",
+    "Önizleme & Log", "Dışa Aktar",
 ])
 
-# ------------------- Tab 1: Özet -------------------
 with tab1:
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Satır", df.shape[0])
@@ -218,14 +198,12 @@ with tab1:
     st.subheader("Veri Önizleme")
     st.dataframe(df.head(15), use_container_width=True)
 
-# ------------------- Tab 2: Akıllı Öneriler -------------------
 with tab2:
     st.caption("Sistem, sütun tiplerine göre otomatik öneriler sunar. Uygulamak istediklerini seç ve tıkla.")
 
-    # Datetime
     date_cols = [c for c, t in col_types.items() if t == "datetime"]
     if date_cols:
-        st.markdown("### 📅 Tarih Özellikleri")
+        st.markdown("### Tarih Özellikleri")
         for col in date_cols:
             with st.expander(f"`{col}` için öneriler"):
                 opts = st.multiselect(
@@ -239,13 +217,12 @@ with tab2:
                     keys = [o[0] for o in opts]
                     created = add_date_features(df, col, keys)
                     st.session_state.df_transformed = df
-                    log_action(f"[date] {col} → {', '.join(created)}")
+                    log_action(f"[date] {col} -> {', '.join(created)}")
                     st.success(f"Oluşturuldu: {', '.join(created)}")
 
-    # Text
     text_cols = [c for c, t in col_types.items() if t == "text"]
     if text_cols:
-        st.markdown("### 🔤 Metin Özellikleri")
+        st.markdown("### Metin Özellikleri")
         for col in text_cols:
             with st.expander(f"`{col}` için öneriler"):
                 opts = st.multiselect(
@@ -259,13 +236,12 @@ with tab2:
                     keys = [o[0] for o in opts]
                     created = add_text_features(df, col, keys)
                     st.session_state.df_transformed = df
-                    log_action(f"[text] {col} → {', '.join(created)}")
+                    log_action(f"[text] {col} -> {', '.join(created)}")
                     st.success(f"Oluşturuldu: {', '.join(created)}")
 
-    # Categorical
     cat_cols = [c for c, t in col_types.items() if t == "categorical"]
     if cat_cols:
-        st.markdown("### 🏷️ Kategorik Özellikler")
+        st.markdown("### Kategorik Özellikler")
         for col in cat_cols:
             with st.expander(f"`{col}` için öneriler"):
                 opts = st.multiselect(
@@ -278,13 +254,12 @@ with tab2:
                     keys = [o[0] for o in opts]
                     created = add_categorical_features(df, col, keys)
                     st.session_state.df_transformed = df
-                    log_action(f"[cat] {col} → {', '.join(created)}")
+                    log_action(f"[cat] {col} -> {', '.join(created)}")
                     st.success(f"Oluşturuldu: {', '.join(created)}")
 
-    # Numeric
     num_cols = [c for c, t in col_types.items() if t == "numeric"]
     if num_cols:
-        st.markdown("### 🔢 Sayısal Özellikler")
+        st.markdown("### Sayısal Özellikler")
         for col in num_cols:
             with st.expander(f"`{col}` için öneriler"):
                 opts = st.multiselect(
@@ -305,12 +280,11 @@ with tab2:
                     keys = [o[0] for o in opts]
                     created = add_numeric_features(df, col, keys, threshold=thr, bins=bins)
                     st.session_state.df_transformed = df
-                    log_action(f"[num] {col} → {', '.join(created)}")
+                    log_action(f"[num] {col} -> {', '.join(created)}")
                     st.success(f"Oluşturuldu: {', '.join(created)}")
 
-# ------------------- Tab 3: Manuel -------------------
 with tab3:
-    st.caption("Kodlama gerekmez — sütunları seç, operasyonu seç.")
+    st.caption("Kodlama gerekmez. Sütunları seç, operasyonu seç.")
     num_cols_now = df.select_dtypes(include=[np.number]).columns.tolist()
     op = st.selectbox("Operasyon", ["Oran (a/b)", "Fark (a-b)", "Çarpım (a*b)",
                                     "Toplam (a+b)", "Flag (koşul)", "Metin içerir"])
@@ -357,32 +331,30 @@ with tab3:
             log_action(f"[manual] {name} = {col}.contains('{kw}')")
             st.success(f"`{name}` oluşturuldu.")
 
-# ------------------- Tab 4: Önizleme -------------------
 with tab4:
     original_cols = set(st.session_state.df_original.columns)
     new_cols = [c for c in df.columns if c not in original_cols]
-    st.subheader(f"✨ Yeni Özellikler ({len(new_cols)})")
+    st.subheader(f"Yeni Özellikler ({len(new_cols)})")
     if new_cols:
         st.dataframe(df[new_cols].head(20), use_container_width=True)
     else:
         st.info("Henüz yeni özellik yok.")
 
-    st.subheader("📝 Dönüşüm Günlüğü")
+    st.subheader("Dönüşüm Günlüğü")
     if st.session_state.log:
         for line in st.session_state.log:
             st.text(line)
     else:
         st.caption("Henüz işlem yok.")
 
-# ------------------- Tab 5: Export -------------------
 with tab5:
     st.caption("Dönüştürülmüş dataseti indir.")
     csv = df.to_csv(index=False).encode("utf-8")
-    st.download_button("⬇️ CSV indir", csv, "transformed.csv", "text/csv")
+    st.download_button("CSV indir", csv, "transformed.csv", "text/csv")
 
     buf = io.BytesIO()
     with pd.ExcelWriter(buf, engine="openpyxl") as w:
         df.to_excel(w, index=False, sheet_name="data")
         pd.DataFrame({"log": st.session_state.log}).to_excel(w, index=False, sheet_name="log")
-    st.download_button("⬇️ Excel indir", buf.getvalue(), "transformed.xlsx",
+    st.download_button("Excel indir", buf.getvalue(), "transformed.xlsx",
                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
