@@ -320,7 +320,7 @@ with st.sidebar:
             st.session_state.log = []
             st.session_state.type_overrides = {}
 
-    with st.expander("ℹ️ Nasıl kullanılır?"):
+    with st.expander("Nasıl kullanılır?"):
         st.markdown(
             "1. Dosyanı yükle veya örnek veriyi kullan.\n"
             "2. **Akıllı Öneriler** sekmesinde sütunlarını gör; her yöntemin "
